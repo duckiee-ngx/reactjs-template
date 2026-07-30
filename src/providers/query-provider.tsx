@@ -11,8 +11,8 @@ const queryClient = new QueryClient({
   },
 })
 
-const TanstackQueryProvider = ({ children }: { children: React.ReactNode }) => {
+const QueryProvider = ({ children }: { children: React.ReactNode }) => {
   return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 }
 
-export default TanstackQueryProvider
+export default QueryProvider

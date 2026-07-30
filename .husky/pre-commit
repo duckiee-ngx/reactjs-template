@@ -1,1 +1,4 @@
-npx --no-install biome check .
+#!/usr/bin/env sh
+
+npm run lint
+npm run typecheck

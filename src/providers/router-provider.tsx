@@ -1,4 +1,4 @@
-import { createRouter, RouterProvider } from "@tanstack/react-router"
+import { createRouter, RouterProvider as TanstackRouterProvider } from "@tanstack/react-router"
 // Import the generated route tree
 import { routeTree } from "../routeTree.gen"
 
@@ -12,8 +12,8 @@ declare module "@tanstack/react-router" {
   }
 }
 
-const TanstackRouterProvider = () => {
-  return <RouterProvider router={router} />
+const RouterProvider = () => {
+  return <TanstackRouterProvider router={router} />
 }
 
-export default TanstackRouterProvider
+export default RouterProvider

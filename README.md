@@ -1,73 +1,125 @@
-# React + TypeScript + Vite
+# ReactJS Template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React frontend template with a modular architecture, Vite, TanStack Router/Query, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Boilerplate for spinning up a SPA quickly: app providers (`src/providers`), shared utilities (`src/shared`), feature modules (`src/modules`), file-based routes (`src/routes`), Axios config, Biome lint/format, TypeScript project references, and Husky git hooks.
 
-## React Compiler
+## Tech stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Layer | Technology |
+| --- | --- |
+| Runtime | Node.js (via nvm or equivalent) |
+| Package manager | npm (swap to pnpm/yarn via `Makefile`) |
+| Bundler / dev server | Vite |
+| UI library | React 19 |
+| Routing | TanStack Router |
+| Server state | TanStack Query |
+| HTTP | Axios |
+| Styling | Tailwind CSS 4 |
+| Lint / format | Biome |
+| Typecheck | TypeScript (`tsc -b`) |
+| Git hooks | Husky + commitlint (conventional commits) |
 
-## Expanding the ESLint configuration
+## Quick start
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+```bash
+# Enter the project directory
+cd reactjs-template
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# Install dependencies
+make install
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# Copy env
+cp .env.example .env
+# Fill in API base URL and other client settings in .env
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Start the dev server
+make start
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+App: `http://127.0.0.1:5173`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Commands
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Command | Description |
+| --- | --- |
+| `make install` | Install dependencies |
+| `make start` | Run Vite dev server |
+| `make lint` | Biome check |
+| `make format` | Biome format |
+| `make typecheck` | TypeScript build-mode check (`tsc -b --noEmit`) |
+
+Or run directly via npm:
+
+```bash
+npm install
+npm run start
+npm run lint
+npm run format
+npm run typecheck
+npm run build
+npm run preview
+```
+
+## Project structure
+
+```
+reactjs-template/
+│
+├── src/
+│   ├── configs/
+│   │
+│   ├── modules/
+│   │   ├── auth/
+│   │   │   ├── components/
+│   │   │   ├── constants/
+│   │   │   ├── hooks/
+│   │   │   ├── store/
+│   │   │   ├── api.ts
+│   │   │   ├── mapper.ts
+│   │   │   ├── query.ts
+│   │   │   └── schemas.ts
+│   │   │
+│   │   └── ...
+│   │
+│   ├── providers/
+│   │
+│   ├── routes/
+│   │
+│   ├── shared/
+│   │   ├── components/
+│   │   ├── constants/
+│   │   ├── hooks/
+│   │   ├── store/
+│   │   └── utils/
+│   │
+│   ├── App.tsx
+│   ├── main.tsx
+│   ├── index.css
+│   └── routeTree.gen.ts
+│
+├── public/
+│
+├── .husky/
+│
+├── .env
+├── .env.example
+├── biome.json
+├── commitlint.config.cjs
+├── index.html
+├── package.json
+├── package-lock.json
+├── Makefile
+├── Dockerfile
+├── .dockerignore
+├── .gitignore
+├── tailwind.config.js
+├── tsr.config.json
+├── vite.config.ts
+├── tsconfig.json
+├── tsconfig.app.json
+├── tsconfig.node.json
+└── README.md
 ```
