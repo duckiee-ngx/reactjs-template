@@ -1,10 +1,13 @@
+import AuthProvider from "./modules/auth/providers/auth-provider"
 import QueryProvider from "./providers/query-provider"
 import RouterProvider from "./providers/router-provider"
 
 const App = () => {
   return (
     <QueryProvider>
-      <RouterProvider />
+      <AuthProvider>
+        <RouterProvider />
+      </AuthProvider>
     </QueryProvider>
   )
 }

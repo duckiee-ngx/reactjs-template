@@ -5,8 +5,8 @@
       "preset": "recommended",
       "source": {
         "organizeImports": "on",
-        "useSortedKeys": "off",
         "useSortedAttributes": "on",
+        "useSortedKeys": "off",
         "useSortedProperties": "on"
       }
     },
@@ -25,11 +25,11 @@
     }
   },
   "files": {
-    "includes": ["src/**/*", "!src/routeTree.gen.ts"]
+    "includes": ["src/**/*", "!src/routeTree.gen.ts", "vite.config.ts"]
   },
   "formatter": {
-    "enabled": true,
     "attributePosition": "multiline",
+    "enabled": true,
     "indentStyle": "space",
     "indentWidth": 2,
     "lineEnding": "lf",
@@ -37,8 +37,8 @@
   },
   "javascript": {
     "formatter": {
-      "enabled": true,
       "attributePosition": "multiline",
+      "enabled": true,
       "indentStyle": "space",
       "indentWidth": 2,
       "jsxQuoteStyle": "double",
@@ -64,17 +64,17 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "preset": "recommended",
-      "nursery": {},
       "a11y": {
         "useAltText": "error"
       },
       "complexity": {},
       "correctness": {
-        "noUnusedVariables": "info",
-        "noInvalidUseBeforeDeclaration": "error"
+        "noInvalidUseBeforeDeclaration": "error",
+        "noUnusedVariables": "info"
       },
+      "nursery": {},
       "performance": {},
+      "preset": "recommended",
       "security": {},
       "style": {
         "noNonNullAssertion": "off"

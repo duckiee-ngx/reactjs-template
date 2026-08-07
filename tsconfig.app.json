@@ -27,7 +27,10 @@
     // "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "paths": {
+      "@src/*": ["./src/*"]
+    }
   },
   "include": [
     "src"
