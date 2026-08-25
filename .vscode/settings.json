@@ -1,31 +1,28 @@
 {
   "prettier.ignorePath": ".gitignore",
-  "biome.enabled": true,
-  "biome.requireConfiguration": true,
   "editor.defaultFormatter": "biomejs.biome",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.addMissingImports": "always",
     "source.fixAll.biome": "always",
+    "source.addMissingImports.ts": "always",
     "source.removeUnusedImports": "always",
-    "source.organizeImports": "never",
-    "source.useSortedAttributes": "always",
-    "source.useSortedKeys": "never",
-    "source.useSortedProperties": "always"
+    "source.removeUnused.ts": "always"
   },
-  "[json][jsonc][yaml]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "biomejs.biome"
+  "[yml][yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[typescript]": {
-    "editor.defaultFormatter": "biomejs.biome"
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    ".*ClassName"
+  ],
+  "tailwindCSS.classFunctions": ["cn", "clsx"],
+  "editor.quickSuggestions": {
+    "strings": "on"
   },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "biomejs.biome",
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "tailwindCSS.classAttributes": ["class", "className", "ngClass", ".*ClassName"],
-  "tailwindCSS.emmetCompletions": true
+  "tailwindCSS.emmetCompletions": true,
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
 }

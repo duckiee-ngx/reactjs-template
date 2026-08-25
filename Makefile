@@ -2,7 +2,7 @@
 PM := npm
 PM_RUN := $(PM) run
 
-.PHONY: install start lint format typecheck
+.PHONY: install start check fix typecheck
 
 install:
 	$(PM) install
@@ -10,11 +10,11 @@ install:
 start:
 	$(PM_RUN) start
 
-lint:
-	$(PM_RUN) lint
+check:
+	$(PM_RUN) check
 
-format:
-	$(PM_RUN) format
+fix:
+	$(PM_RUN) fix
 
 typecheck:
 	$(PM_RUN) typecheck

@@ -1,6 +1,6 @@
-import AuthProvider from "./modules/auth/providers/auth-provider"
-import QueryProvider from "./providers/query-provider"
-import RouterProvider from "./providers/router-provider"
+import AuthProvider from "./modules/auth/providers/auth-provider";
+import QueryProvider from "./providers/query-provider";
+import RouterProvider from "./providers/router-provider";
 
 const App = () => {
   return (
@@ -9,7 +9,7 @@ const App = () => {
         <RouterProvider />
       </AuthProvider>
     </QueryProvider>
-  )
-}
+  );
+};
 
-export default App
+export default App;

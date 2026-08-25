@@ -1,4 +1,8 @@
-import { keepPreviousData, QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import {
+  keepPreviousData,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -9,10 +13,12 @@ const queryClient = new QueryClient({
       staleTime: Infinity,
     },
   },
-})
+});
 
 const QueryProvider = ({ children }: { children: React.ReactNode }) => {
-  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-}
+  return (
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+  );
+};
 
-export default QueryProvider
+export default QueryProvider;

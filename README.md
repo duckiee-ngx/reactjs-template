@@ -4,7 +4,7 @@ A React frontend template with a modular architecture, Vite, TanStack Router/Que
 
 ## Overview
 
-Boilerplate for spinning up a SPA quickly: app providers (`src/providers`), shared utilities (`src/shared`), feature modules with Zod schemas and Zustand stores (`src/modules`), file-based routes (`src/routes`), Axios HTTP client, env validation, Biome lint/format, TypeScript project references, Husky git hooks, and a multi-stage Docker image (Node build → nginx).
+Boilerplate for spinning up a SPA quickly: app providers (`src/providers`), shared utilities (`src/shared`), feature modules with Zod schemas and Zustand stores (`src/modules`), file-based routes (`src/routes`), Axios HTTP client, env validation, Biome check/fix, TypeScript project references, Husky git hooks, and a multi-stage Docker image (Node build → nginx).
 
 ## Tech stack
 
@@ -20,7 +20,7 @@ Boilerplate for spinning up a SPA quickly: app providers (`src/providers`), shar
 | Validation | Zod |
 | HTTP | Axios |
 | Styling | Tailwind CSS 4 |
-| Lint / format | Biome |
+| Code quality | Biome (`check` / `fix`) |
 | Typecheck | TypeScript (`tsc -b`) |
 | Git hooks | Husky + commitlint (conventional commits) |
 | Production image | Multi-stage Docker + nginx |
@@ -60,8 +60,8 @@ Vite inlines `VITE_*` at **build time**. The value must be reachable from the **
 | --- | --- |
 | `make install` | Install dependencies |
 | `make start` | Run Vite dev server |
-| `make lint` | Biome check |
-| `make format` | Biome format |
+| `make check` | Biome check (format, lint, assist — report only) |
+| `make fix` | Biome check --write (apply safe fixes) |
 | `make typecheck` | TypeScript build-mode check (`tsc -b --noEmit`) |
 
 Or run directly via npm:
@@ -69,8 +69,8 @@ Or run directly via npm:
 ```bash
 npm install
 npm run start
-npm run lint
-npm run format
+npm run check
+npm run fix
 npm run typecheck
 npm run build
 npm run preview
