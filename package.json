@@ -9,8 +9,8 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "check": "biome check .",
-    "fix": "biome check --write .",
+    "check": "biome check",
+    "fix": "biome check --write",
     "typecheck": "tsc -b --noEmit",
     "preview": "vite preview",
     "prepare": "husky"
@@ -27,7 +27,7 @@
     "zustand": "^5.0.14"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.2",
+    "@biomejs/biome": "2.5.10",
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
     "@tailwindcss/vite": "^4.1.17",

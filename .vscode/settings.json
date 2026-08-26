@@ -5,18 +5,12 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.biome": "always",
     "source.addMissingImports.ts": "always",
-    "source.removeUnusedImports": "always",
-    "source.removeUnused.ts": "always"
+    "source.removeUnusedImports": "always"
   },
   "[yml][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "tailwindCSS.classAttributes": [
-    "class",
-    "className",
-    "ngClass",
-    ".*ClassName"
-  ],
+  "tailwindCSS.classAttributes": ["class", "className", ".*ClassName"],
   "tailwindCSS.classFunctions": ["cn", "clsx"],
   "editor.quickSuggestions": {
     "strings": "on"

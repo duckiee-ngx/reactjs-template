@@ -1,7 +1,6 @@
 import { httpClient } from "@src/shared/api/http-client";
 import { AUTH_API_ENDPOINTS } from "./constants";
 import { loginMapper, refreshTokenMapper } from "./mapper";
-
 import type { LoginRequest } from "./schemas";
 
 export const login = async (body: LoginRequest) => {
