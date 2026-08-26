@@ -6,6 +6,8 @@ A React frontend template with a modular architecture, Vite, TanStack Router/Que
 
 Boilerplate for spinning up a SPA quickly: app providers (`src/providers`), shared utilities (`src/shared`), feature modules with Zod schemas and Zustand stores (`src/modules`), file-based routes (`src/routes`), Axios HTTP client, env validation, Biome check/fix, TypeScript project references, Husky git hooks, and a multi-stage Docker image (Node build → nginx).
 
+Auth: access token in Zustand (memory only), refresh via httpOnly cookie (`withCredentials`). Protected routes live under `_authenticated` (`beforeLoad` + `ensureSession`). Axios interceptors are attached in `src/main.tsx`.
+
 ## Tech stack
 
 | Layer | Technology |
@@ -105,11 +107,11 @@ reactjs-template/
 │   │
 │   ├── modules/
 │   │   ├── auth/
-│   │   │   ├── providers/
 │   │   │   ├── utils/
 │   │   │   │   └── session.ts
 │   │   │   ├── api.ts
 │   │   │   ├── constants.ts
+│   │   │   ├── http-interceptors.ts
 │   │   │   ├── mapper.ts
 │   │   │   ├── query.ts
 │   │   │   ├── schemas.ts
@@ -122,10 +124,12 @@ reactjs-template/
 │   │   └── router-provider.tsx
 │   │
 │   ├── routes/
+│   │   ├── _authenticated/
+│   │   │   └── index.tsx
 │   │   ├── auth/
 │   │   │   └── login.tsx
 │   │   ├── __root.tsx
-│   │   └── index.tsx
+│   │   └── _authenticated.tsx
 │   │
 │   ├── shared/
 │   │   ├── api/
