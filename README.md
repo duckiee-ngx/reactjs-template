@@ -6,7 +6,7 @@ A React frontend template with a modular architecture, Vite, TanStack Router/Que
 
 Boilerplate for spinning up a SPA quickly: app providers (`src/providers`), shared utilities (`src/shared`), feature modules with Zod schemas and Zustand stores (`src/modules`), file-based routes (`src/routes`), Axios HTTP client, env validation, Biome check/fix, TypeScript project references, Husky git hooks, and a multi-stage Docker image (Node build → nginx).
 
-Auth: access token in Zustand (memory only), refresh via httpOnly cookie (`withCredentials`). Protected routes live under `_authenticated` (`beforeLoad` + `ensureSession`). Axios interceptors are attached in `src/main.tsx`.
+Auth: access token in Zustand (memory only), refresh via httpOnly cookie (`withCredentials`). Protected routes live under `_protected` (`beforeLoad` + `ensureSession`); public routes under `_public` (e.g. `/login`). Axios interceptors are attached in `src/main.tsx`.
 
 ## Tech stack
 
@@ -33,11 +33,8 @@ Auth: access token in Zustand (memory only), refresh via httpOnly cookie (`withC
 # Enter the project directory
 cd reactjs-template
 
-# Install dependencies
-make install
-
-# Copy env
-cp .env.example .env
+# Install deps and create .env
+make setup
 # Set VITE_API_URL (must be a valid URL; validated at startup via Zod)
 
 # Start the dev server
@@ -60,7 +57,7 @@ Vite inlines `VITE_*` at **build time**. The value must be reachable from the **
 
 | Command | Description |
 | --- | --- |
-| `make install` | Install dependencies |
+| `make setup` | Install deps and create `.env` from `.env.example` |
 | `make start` | Run Vite dev server |
 | `make check` | Biome check (format, lint, assist — report only) |
 | `make fix` | Biome check --write (apply safe fixes) |
@@ -94,7 +91,7 @@ docker run --rm -p 3000:80 reactjs-template
 
 App: `http://127.0.0.1:3000` (same port as local Vite)
 
-Verify SPA routing: open `/auth/login` and refresh — nginx should still serve the app (not a raw 404).
+Verify SPA routing: open `/login` and refresh — nginx should still serve the app (not a raw 404).
 
 ## Project structure
 
@@ -124,12 +121,13 @@ reactjs-template/
 │   │   └── router-provider.tsx
 │   │
 │   ├── routes/
-│   │   ├── _authenticated/
+│   │   ├── _protected/
 │   │   │   └── index.tsx
-│   │   ├── auth/
+│   │   ├── _public/
 │   │   │   └── login.tsx
 │   │   ├── __root.tsx
-│   │   └── _authenticated.tsx
+│   │   ├── _protected.tsx
+│   │   └── _public.tsx
 │   │
 │   ├── shared/
 │   │   ├── api/

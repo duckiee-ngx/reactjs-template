@@ -12,7 +12,7 @@ const router = createRouter({
 });
 
 registerSessionNavigator(() => {
-  void router.navigate({ to: "/auth/login", replace: true });
+  void router.navigate({ to: "/login", replace: true });
 });
 
 // Register the router instance for type safety
